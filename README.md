@@ -1,5 +1,6 @@
 # about_nest
 nestjs에 대해서 알게 된 정보를 기록하는 저장소입니다.
+<br/><br/>
 
 
 
@@ -15,6 +16,8 @@ app.get("*",(req,res,next)=>{
 	res.sendFile(path.join(__dirname, "public", "index.html"));
 });
 ```
+<br/><br/>
+
 
 # 6강 - 컨트롤러 기본
 ### 모듈
@@ -31,6 +34,8 @@ app.get("*",(req,res,next)=>{
 {code: SUCCESS, data: data} //의 모양으로 알아서 데이터 return
 ```
 - return res.json(data);하지 않고 return data; 해도 알아서 역직렬화 해줌
+<br/><br/>
+
 
 # 7강 ConfigModule 사용하기(dotenv 진화판)
 - express의 미들웨어 vs nest
@@ -46,6 +51,7 @@ app.get("*",(req,res,next)=>{
   imports: [ConfigModule.forRoot({isGlobal:true, load:[getEnv]})], 
   // const getEnv = async ()=>{} //비동기함수로 사용 가능해짐
 ```
+<br/><br/>
 
 # 8강 loggerMiddleware로 morgan처럼 로깅하기
 - 요청이 들어왔을때 콘솔 출력 해쥼
