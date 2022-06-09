@@ -32,3 +32,21 @@ app.get("*",(req,res,next)=>{
 ```
 - return res.json(data);하지 않고 return data; 해도 알아서 역직렬화 해줌
 
+# 7강 ConfigModule 사용하기(dotenv 진화판)
+- express의 미들웨어 vs nest
+- nest는 모듈 시스템이라 .env 등을 갖다 쓰려고 해도 모듈로 만들어서 다시 연결하는 작업을 해야함. -> 기존 라이브러리 미리 모듈로 감싸놓은 패키지를 사용하는게 편함. 
+```javascript
+@Module({
+  imports: [ConfigModule], //설정 없는 경우 모듈만  
+  imports: [ConfigModule.forRoot()], //설정 있는 경우 모듈뒤에 함수가 붙음 
+```
+- (.env)ConfigService를 사용하여 -> Service클래스에서 주입을 해주어 사용하는 것이 좋다. 
+```javascript
+@Module({
+  imports: [ConfigModule.forRoot({isGlobal:true, load:[getEnv]})], 
+  // const getEnv = async ()=>{} //비동기함수로 사용 가능해짐
+```
+
+# 8강 loggerMiddleware로 morgan처럼 로깅하기
+- 요청이 들어왔을때 콘솔 출력 해쥼
+- cf)  next(); // 미들웨어 쓸 떄 항상 next()를 써야 다음으로 넘어감
